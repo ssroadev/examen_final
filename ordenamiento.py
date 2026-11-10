@@ -1,32 +1,26 @@
 import random
 
-# Contadores globales para las iteraciones
-iteraciones_burbuja = 0
-iteraciones_insercion = 0
-
 def generar_lista_aleatoria(n=10):
     """Genera una lista de n elementos aleatorios entre 1 y 100"""
     return [random.randint(1, 100) for _ in range(n)]
 
 def ordenamiento_burbuja(lista):
     """Ordena la lista usando el método de burbuja y cuenta las iteraciones"""
-    global iteraciones_burbuja
-    iteraciones_burbuja = 0
+    iteraciones = 0
     arr = lista.copy()  # Copiar para no modificar la original
     n = len(arr)
     
     for i in range(n):
         for j in range(0, n - i - 1):
-            iteraciones_burbuja += 1
+            iteraciones += 1
             if arr[j] > arr[j + 1]:
                 arr[j], arr[j + 1] = arr[j + 1], arr[j]
     
-    return arr
+    return arr, iteraciones
 
 def ordenamiento_insercion(lista):
     """Ordena la lista usando el método de inserción y cuenta las iteraciones"""
-    global iteraciones_insercion
-    iteraciones_insercion = 0
+    iteraciones = 0
     arr = lista.copy()  # Copiar para no modificar la original
     
     for i in range(1, len(arr)):
@@ -34,14 +28,14 @@ def ordenamiento_insercion(lista):
         j = i - 1
         
         while j >= 0 and clave < arr[j]:
-            iteraciones_insercion += 1
+            iteraciones += 1
             arr[j + 1] = arr[j]
             j -= 1
         
-        iteraciones_insercion += 1  # Contar la última comparación
+        iteraciones += 1  # Contar la última comparación
         arr[j + 1] = clave
     
-    return arr
+    return arr, iteraciones
 
 def mostrar_menu():
     """Muestra el menú de opciones"""
@@ -70,28 +64,28 @@ def main():
         
         elif opcion == "2":
             print(f"\nLista original: {lista_original}")
-            lista_ordenada = ordenamiento_burbuja(lista_original)
+            lista_ordenada, iteraciones = ordenamiento_burbuja(lista_original)
             print(f"Lista ordenada (Burbuja): {lista_ordenada}")
-            print(f"Iteraciones realizadas: {iteraciones_burbuja}")
+            print(f"Iteraciones realizadas: {iteraciones}")
         
         elif opcion == "3":
             print(f"\nLista original: {lista_original}")
-            lista_ordenada = ordenamiento_insercion(lista_original)
+            lista_ordenada, iteraciones = ordenamiento_insercion(lista_original)
             print(f"Lista ordenada (Inserción): {lista_ordenada}")
-            print(f"Iteraciones realizadas: {iteraciones_insercion}")
+            print(f"Iteraciones realizadas: {iteraciones}")
         
         elif opcion == "4":
             print(f"\nLista original: {lista_original}")
             print("\n--- COMPARACIÓN DE ALGORITMOS ---")
             
             # Ordenar con burbuja
-            lista_burbuja = ordenamiento_burbuja(lista_original)
+            lista_burbuja, iteraciones_burbuja = ordenamiento_burbuja(lista_original)
             print(f"\n✓ Método Burbuja:")
             print(f"  Lista ordenada: {lista_burbuja}")
             print(f"  Iteraciones: {iteraciones_burbuja}")
             
             # Ordenar con inserción
-            lista_insercion = ordenamiento_insercion(lista_original)
+            lista_insercion, iteraciones_insercion = ordenamiento_insercion(lista_original)
             print(f"\n✓ Método de Inserción:")
             print(f"  Lista ordenada: {lista_insercion}")
             print(f"  Iteraciones: {iteraciones_insercion}")
