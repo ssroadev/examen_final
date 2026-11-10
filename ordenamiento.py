@@ -1,13 +1,12 @@
 import random
 
 def generar_lista_aleatoria(n=10):
-    """Genera una lista de n elementos aleatorios entre 1 y 100"""
     return [random.randint(1, 100) for _ in range(n)]
 
 def ordenamiento_burbuja(lista):
     """Ordena la lista usando el método de burbuja y cuenta las iteraciones"""
     iteraciones = 0
-    arr = lista.copy()  # Copiar para no modificar la original
+    arr = lista.copy() 
     n = len(arr)
     
     for i in range(n):
@@ -21,7 +20,7 @@ def ordenamiento_burbuja(lista):
 def ordenamiento_insercion(lista):
     """Ordena la lista usando el método de inserción y cuenta las iteraciones"""
     iteraciones = 0
-    arr = lista.copy()  # Copiar para no modificar la original
+    arr = lista.copy()  
     
     for i in range(1, len(arr)):
         clave = arr[i]
@@ -32,7 +31,7 @@ def ordenamiento_insercion(lista):
             arr[j + 1] = arr[j]
             j -= 1
         
-        iteraciones += 1  # Contar la última comparación
+        iteraciones += 1 
         arr[j + 1] = clave
     
     return arr, iteraciones
@@ -86,29 +85,28 @@ def main():
             
             # Ordenar con inserción
             lista_insercion, iteraciones_insercion = ordenamiento_insercion(lista_original)
-            print(f"\n✓ Método de Inserción:")
+            print(f"\nMétodo de Inserción:")
             print(f"  Lista ordenada: {lista_insercion}")
             print(f"  Iteraciones: {iteraciones_insercion}")
             
-            # Comparar
             print("\n--- RESULTADO ---")
             if iteraciones_burbuja < iteraciones_insercion:
-                print(f"🏆 El método Burbuja usó menos iteraciones: {iteraciones_burbuja} vs {iteraciones_insercion}")
+                print(f"El método Burbuja usó menos iteraciones: {iteraciones_burbuja} vs {iteraciones_insercion}")
                 diferencia = iteraciones_insercion - iteraciones_burbuja
                 print(f"   Diferencia: {diferencia} iteraciones")
             elif iteraciones_insercion < iteraciones_burbuja:
-                print(f"🏆 El método de Inserción usó menos iteraciones: {iteraciones_insercion} vs {iteraciones_burbuja}")
+                print(f"El método de Inserción usó menos iteraciones: {iteraciones_insercion} vs {iteraciones_burbuja}")
                 diferencia = iteraciones_burbuja - iteraciones_insercion
                 print(f"   Diferencia: {diferencia} iteraciones")
             else:
-                print(f"⚖️  Ambos métodos usaron la misma cantidad de iteraciones: {iteraciones_burbuja}")
+                print(f"Ambos métodos usaron la misma cantidad de iteraciones: {iteraciones_burbuja}")
         
         elif opcion == "5":
             print("\n¡Gracias por usar el programa! Hasta luego.")
             break
         
         else:
-            print("\n❌ Opción inválida. Por favor, seleccione un número entre 1 y 5.")
+            print("\nOpción inválida. Por favor, seleccione un número entre 1 y 5.")
 
 if __name__ == "__main__":
     main()

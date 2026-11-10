@@ -48,7 +48,7 @@ Lista original: [45, 12, 89, 3, 67, 23, 91, 56, 34, 78]
   Iteraciones: 28
 
 --- RESULTADO ---
-🏆 El método de Inserción usó menos iteraciones: 28 vs 45
+El método de Inserción usó menos iteraciones: 28 vs 45
    Diferencia: 17 iteraciones
 ```
 
